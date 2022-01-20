@@ -29,10 +29,17 @@
                 <form action="procesar.php" method="get" class="row g-3 needs-validation" novalidate>
 
                     <div class="mb-3 mt-3">
-                        <label for="uname" class="form-label">Username:</label>
-                        <input type="text" class="form-control" id="uname" name="uname" placeholder="Enter username" required>
-                        <div class="valid-feedback">Valid.</div>
-                        <div class="invalid-feedback">Please fill out this field.</div>
+                        <label for="uname" class="form-label">
+                          <span>Username:</span>
+                          <input type="text" class="form-control" id="uname" name="uname" placeholder="Enter username" 
+                            minlength="3" maxlength="100" required>
+                          <div class="valid-feedback">Valid.</div>
+                          <div class="invalid-feedback">Please fill out this field.</div>
+                          <ul class="input-requirement">
+                            <li>At least 3 characters long (and less than 100 characters)</li>
+                            <li>Must only contain letters and numbers (no special characters)</li>
+                          </ul>
+                      </label>
                     </div>
 
                     <div class="col-md-6 ">

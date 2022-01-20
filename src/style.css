@@ -33,3 +33,17 @@
     opacity: 1;
   }
 }
+.valid {
+  color: green;
+}
+.invalid {
+  color: red;
+}
+
+.input-requirement {
+  display: none;
+}
+
+input:focus + .input-requirement {
+  display: block;
+}
