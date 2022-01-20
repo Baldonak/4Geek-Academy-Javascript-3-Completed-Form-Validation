@@ -1,0 +1,35 @@
+@import "~bootstrap/dist/css/bootstrap.min.css";
+.formName {
+  border-radius: 0;
+}
+.display_none {
+  display: none;
+}
+.display_block {
+  display: block;
+}
+.btnGroup {
+  text-align: right;
+}
+.radioGr {
+  background-color: grey;
+  border-radius: 2em;
+  padding-left: 1em;
+}
+.ammLabel {
+  margin-bottom: 0.5em;
+}
+.blink {
+  animation: blink 1s steps(1, end) infinite;
+}
+@keyframes blink {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
