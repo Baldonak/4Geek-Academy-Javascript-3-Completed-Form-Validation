@@ -71,8 +71,6 @@ CustomValidation.prototype = {
       this.notInvalidities[0] = true;
     }
 
-    console.log(`Validation: ${this.notInvalidities}`); //Test
-
     return this.notInvalidities;
     // Condition 2: Must only contain letters and numbers (no special characters) <-------------No se esta evaluando
     //     if (input.value.match(/[^a-zA-Z0-9]/g)) {
@@ -102,23 +100,26 @@ user_name_input.CustomValidation = new CustomValidation();
 // var cardNo_input = document.querySelector("#cardNo");
 // cardNo_input.CustomValidation = new CustomValidation();
 
+var notFormInvalidities = false;
+
 //Validación de los campos del formulario
 user_name_input.addEventListener("keyup", function() {
   user_name_input.CustomValidation.checkValidity(this);
-  //undefined----------------------------------------------------------------------
-  var notFormInvalidities = user_name_input.CustomValidation.checkValidity(
-    this
-  );
+  notFormInvalidities = user_name_input.CustomValidation.checkValidity(this);
   console.log(`Validation final: ${notFormInvalidities}`);
   // console.log(
   //   `Mensajes de error en array: ${user_name_input.CustomValidation.getInvalidity()}`
   // );
 });
 
+// user_name_input.addEventListener("keyup", function() {
+//   console.log(`Value final fuera: ${notFormInvalidities}`);
+// });
+
 //Para el envío del formulario si "notFormInvalidities" es "false"
 var form = document.querySelector("#form");
 form.addEventListener("submit", function(event) {
-  alert("Hola");
+  console.log(`Validation final que se mete dentro: ${notFormInvalidities}`);
   if (true) {
     //--------------------------------------------------------
     alert("There are some errors. Cannot send the form");
