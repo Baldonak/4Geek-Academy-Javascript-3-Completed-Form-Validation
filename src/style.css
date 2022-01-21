@@ -40,10 +40,10 @@
   color: red;
 }
 
-.input-requirement {
+/*.input-requirement {
   display: none;
 }
 
-input:focus + .input-requirement {
+input:focus ~ .input-requirement {
   display: block;
-}
+}*/

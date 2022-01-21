@@ -10,7 +10,6 @@
         integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
     <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
         integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
-    <link rel="stylesheet" href="main.css">
 </head>
 
 <body>
@@ -26,119 +25,28 @@
             </div>
 
             <div class="container">
-                <form action="procesar.php" method="get" class="row g-3 needs-validation" novalidate>
+                <form action="procesar.php" method="get" class="row g-3 needs-validation" id="form" novalidate>
 
-                    <div class="mb-3 mt-3">
+                    <div class="col-md-12">
                         <label for="uname" class="form-label">
                           <span>Username:</span>
-                          <input type="text" class="form-control" id="uname" name="uname" placeholder="Enter username" 
-                            minlength="3" maxlength="100" required>
-                          <div class="valid-feedback">Valid.</div>
-                          <div class="invalid-feedback">Please fill out this field.</div>
+                          <input type="text" class="form-control invalidCheck" id="uname" name="uname" placeholder="Enter username" autocomplete="off"
+                            required>
                           <ul class="input-requirement">
                             <li>At least 3 characters long (and less than 100 characters)</li>
                             <li>Must only contain letters and numbers (no special characters)</li>
                           </ul>
                       </label>
-                    </div>
+                    </div> 
 
-                    <div class="col-md-6 ">
+                    <div class="col-md-12 ">
                         <label for="carnNo" class="form-label">Credit Card:</label>
-                        <input type="number" class="form-control" id="cardNo" name="carnNo" placeholder="XXXXXXXXXXXXXXXX" 
-                            pattern="[0-9]{16}" required>
-                        <div class="valid-feedback">Valid.</div>
-                        <div class="invalid-feedback">Please fill out this field.</div>
-                    </div>
-
-                    <div class="col-md-3">
-                        <label for="cvc" class="form-label">CVC</label>
-                        <input type="number" class="form-control" id="cvc" name="cvc" placeholder="XXX" 
-                            requiered pattern="[0-9]{3}" required>
-                        <div class="valid-feedback">Valid.</div>
-                        <div class="invalid-feedback">Please fill out this field.</div>
-                    </div>
-                    <div class="form-group col-3">
-                        <label class="ammLabel" for="Amount">Amount ($)</label>
-                        <div class="input-group">
-                            <div class="input-group-prepend">
-                                <span class="input-group-text" id="Amount">$</span>
-                            </div>
-                            <input type="number" class="form-control" id="Amount" placeholder="Amount"
-                                aria-describedby="Amount" required>
-
-                            <div class="valid-feedback">Valid.</div>
-                            <div class="invalid-feedback">Please fill out this field.</div>
-                        </div>
-                    </div>
-                    <div class="col-md-6">
-                        <label for="firstName" class="form-label" pattern="[a-z]{1,15}">First Name</label><!--------------->
-                        <input type="text" class="form-control" id="firstName" placeholder="First name" required>
-                        <div class="valid-feedback">Valid.</div>
-                        <div class="invalid-feedback">Please fill out this field.</div>
-                    </div>
-                    <div class="col-md-6">
-                        <label for="lasttName" class="form-label">Last Name</label>
-                        <input type="text" class="form-control" id="lastName" placeholder="Last name" required>
-                        <div class="valid-feedback">Valid.</div>
-                        <div class="invalid-feedback">Please fill out this field.</div>
-                    </div>
-                    <div class="col-md-6">
-                        <label for="city" class="form-label">City</label>
-                        <input type="text" class="form-control" id="city" placeholder="City" required>
-                        <div class="valid-feedback">Valid.</div>
-                        <div class="invalid-feedback">Please fill out this field.</div>
-                    </div>
-                    <div class="col-md-3">
-                        <label for="state" class="form-label">State</label>
-                        <select name="state_" id="state" class="form-select form-control" required>
-                            <option selected></option>
-                            <option value="Ny">New York</option>
-                            <option value="Fl">Florida</option>
-                            <option value="Mi">Mississippi</option>
-                        </select>
-                        <div class="valid-feedback">Valid.</div>
-                        <div class="invalid-feedback">Please fill out this field.</div>
-                    </div>
-                    <div class="col-md-3">
-                        <label for="zip" class="form-label">Zip Code</label>
-                        <input type="number" class="form-control" id="zip" required>
-                        <div class="valid-feedback">Valid.</div>
-                        <div class="invalid-feedback">Please fill out this field.</div>
-                    </div>
-                    <div class="col-md-6">
-                        <p>We accept</p>
-                        <span class="radioGr"><div class="invalid-feedback">Please fill out this field.</div>
-                            <div class="form-check form-check-inline">
-
-                                <input class="form-check-input" name="inlineRadioOptions" type="radio" id="visa"
-                                    value="visa" required>
-                                <label class="form-check-label" for="visa">
-                                    <i class="fab fa-cc-visa"></i>
-                                </label>
-                            </div>
-                            <div class="form-check form-check-inline">
-                                <input class="form-check-input" name="inlineRadioOptions" type="radio" id="mastercard"
-                                    value="mastercard" required>
-                                <label class="form-check-label" for="mastercard">
-                                    <i class="fab fa-cc-mastercard"></i>
-                                </label>
-                            </div>
-                            <div class="form-check form-check-inline">
-                                <input class="form-check-input" name="inlineRadioOptions" type="radio" id="paypal"
-                                    value="paypal" required>
-                                <label class="form-check-label" for="paypal">
-                                    <i class="fab fa-paypal"></i>
-                                </label>
-                            </div>
-
-                        </span>
-
-                    </div>
-                    <div class="col-md-6">
-                        <label for="message" class="form-label">Message</label>
-                        <textarea class="form-control" name="message_" id="message" cols="60" rows="10"></textarea>
-                        <p class="text-muted">Add any notes here.</p>
-                    </div>
+                        <input type="number" class="form-control" id="cardNo" name="carnNo" placeholder="XXXXXXXXXXXXXXXX"
+                          required>
+                        <ul class="input-requirement">
+                          <li>Equal to 16 digits</li>
+                        </ul>
+                    </div> 
             </div>
 
 
