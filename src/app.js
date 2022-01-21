@@ -14,14 +14,23 @@ function CustomValidation() {
     {
       Long:
       {
+        conditional: function(v) { return (v > 3); },
         message: "This input needs to be at least 3 characters long",
         boolean: true,
-      This input needs to be at least 3 characters long : true,
-      Must only contain letters and numbers (no special characters): true,
       }
       Special_charact:
       {
+        conditional: function(v) { return v.match(/[^a-zA-Z0-9]/g); },
         message: "Must only contain letters and numbers (no special characters)",
+        boolean: true,
+      }
+    }
+    pass_errors:
+    {
+      Long:
+      {
+        conditional: user_errors.Long.conditional,
+        message: user_errors.Long.message,
         boolean: true,
       }
     }
@@ -31,8 +40,9 @@ function CustomValidation() {
   ////Array que contiene los mensajes de error que van ocurriendo cada vez que se toca una tecla
   this.errors = [];
   //Array que contiene los booleanos que nos dice si ocurre o no el error asociado
-  //---notErrors[0] ->This input needs to be at least 3 characters long
-  //---notErrors[1] ->Must only contain letters and numbers (no special characters)
+  //---notErrors[0][0] ->This input needs to be at least 3 characters long <--------------Añadiendo más de un input
+  //---notErrors[0][1] ->Must only contain letters and numbers (no special characters) <--------------Añadiendo más de un input
+  //this.notErrors = [[false, false],[false]];<--------------Añadiendo más de un input
   this.notErrors = [false, false];
 }
 
@@ -115,6 +125,7 @@ var notSimpleFormErrors = false;
 user_name_input.addEventListener("keyup", function() {
   user_name_input.CustomValidation.checkValidity(this);
   notFormErrors = user_name_input.CustomValidation.checkValidity(this);
+  //CUIDADO!!!!!!!!!!!!!!!!!!!! Si el array es de dos dimensiones hay que hacer la operación flatten
   notSimpleFormErrors = notFormErrors.reduce((p, c) => p && c);
   console.log(`Validation final: ${notFormErrors}`);
 });
