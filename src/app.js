@@ -45,10 +45,10 @@ CustomValidation.prototype = {
   },
 
   //Función para hacer las comprobaciones:
-  //  1-Añade mensaje de error al array "invalidities" si se cumple la condición
-  //  2-Elimina el mensaje de error del array si no se cumple función <---------Por Imprementar
-  //  3-Cambia el boolean "notInvalidities" a false si alguna condición no se cumple <---------Por Corregir
-  //  4-Cambia clase del mensaje de error del html a no valido o valido para que cambie en el
+  //  1- Añade mensaje de error al array "invalidities" si se cumple la condición
+  //  2- Elimina el mensaje de error del array si no se cumple función <---------Por Imprementar
+  //  3- Cambia el boolean "notInvalidities" a false si alguna condición no se cumple <---------Por Corregir
+  //  4- Cambia clase del mensaje de error del html a no valido o valido para que cambie en el
   //  HTML
 
   checkValidity: function(input) {
@@ -72,6 +72,8 @@ CustomValidation.prototype = {
     }
 
     console.log(`Validation: ${this.notInvalidities}`); //Test
+
+    return this.notInvalidities;
     // Condition 2: Must only contain letters and numbers (no special characters) <-------------No se esta evaluando
     //     if (input.value.match(/[^a-zA-Z0-9]/g)) {
     //       this.addInvalidity(
@@ -100,27 +102,31 @@ user_name_input.CustomValidation = new CustomValidation();
 // var cardNo_input = document.querySelector("#cardNo");
 // cardNo_input.CustomValidation = new CustomValidation();
 
-var notFormInvalidities =
-  user_name_input.CustomValidation
-    .notInvalidities[0]; /*&& cardNo_input.notInvalidities*/
-
 //Validación de los campos del formulario
 user_name_input.addEventListener("keyup", function() {
   user_name_input.CustomValidation.checkValidity(this);
-  console.log(`Validation final: ${notFormInvalidities}`); //<---------------------(¿Por qué muestra siempre true?)
-  console.log(
-    `Mensajes de error en array: ${user_name_input.CustomValidation.getInvalidity()}`
+  //undefined----------------------------------------------------------------------
+  var notFormInvalidities = user_name_input.CustomValidation.checkValidity(
+    this
   );
+  console.log(`Validation final: ${notFormInvalidities}`);
+  // console.log(
+  //   `Mensajes de error en array: ${user_name_input.CustomValidation.getInvalidity()}`
+  // );
 });
 
 //Para el envío del formulario si "notFormInvalidities" es "false"
 var form = document.querySelector("#form");
 form.addEventListener("submit", function(event) {
-  if (!notFormInvalidities) {
+  alert("Hola");
+  if (true) {
     //--------------------------------------------------------
     alert("There are some errors. Cannot send the form");
     event.preventDefault();
     event.stopPropagation();
+    document
+      .querySelector("#header_alert_message")
+      .classList.replace("display_none", "display_block");
   }
 });
 
