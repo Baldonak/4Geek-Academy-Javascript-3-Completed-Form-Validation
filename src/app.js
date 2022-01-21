@@ -5,8 +5,8 @@ import "./style.css";
 import "./assets/img/rigo-baby.jpg";
 import "./assets/img/4geeks.ico";
 //Validación---------------------------------------------------------------------------------------
-function CustomValidation() {
-  //Construir un objeto que contenga todos los mensajes de error y si aparecen o no <--------No implementado
+function CustomValidation(/*error_obj*/) {
+  //Construir un objeto que contenga todos los mensajes de error y si aparecen o no <--------No implementado / mejor si fuera parametro de entrada error_obj
   /*
 
   this.errors = {
