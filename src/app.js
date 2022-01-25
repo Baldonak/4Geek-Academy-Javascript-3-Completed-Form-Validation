@@ -6,45 +6,11 @@ import "./assets/img/rigo-baby.jpg";
 import "./assets/img/4geeks.ico";
 //Validación---------------------------------------------------------------------------------------
 function CustomValidation(/*error_obj*/) {
-  //Construir un objeto que contenga todos los mensajes de error y si aparecen o no <--------No implementado / mejor si fuera parametro de entrada error_obj
-  /*
-
-  this.errors = {
-    type_error:{
-      Long:
-      {
-        conditional: function(v) { return (v > 3); },
-        message: "This input needs to be at least 3 characters long",
-      },
-      Special_charact:
-      {
-        conditional: function(v) { return v.match(/[^a-zA-Z0-9]/g); },
-        message: "Must only contain letters and numbers (no special characters)",
-      }
-    },
-    user_errors:
-    {
-      this.type_error.Long
-      
-    }
-    pass_errors:
-    {
-      Long:
-      {
-        conditional: user_errors.Long.conditional,
-        message: user_errors.Long.message,
-        boolean: true,
-      }
-    }
-  }
-
-  */
-  ////Array que contiene los mensajes de error que van ocurriendo cada vez que se toca una tecla
+  //Array que contiene los mensajes de error que van ocurriendo cada vez que se toca una tecla
   this.errors = [];
   //Array que contiene los booleanos que nos dice si ocurre o no el error asociado
-  //---notErrors[0][0] ->This input needs to be at least 3 characters long <--------------Añadiendo más de un input
-  //---notErrors[0][1] ->Must only contain letters and numbers (no special characters) <--------------Añadiendo más de un input
-  //this.notErrors = [[false, false],[false]];<--------------Añadiendo más de un input
+  //---notErrors[0] ->This input needs to be at least 3 characters long
+  //---notErrors[1] ->Must only contain letters and numbers (no special characters)
   this.notErrors = [false, false];
 }
 
@@ -68,9 +34,7 @@ CustomValidation.prototype = {
   },
   //Función para hacer las comprobaciones:
   //  1- Añade mensaje de error al array "errors" si se cumple la condición
-  //  2- Elimina el mensaje de error del array si no se cumple función <---------Por Imprementar
-  //  3- Cambia el boolean "notErrors" a false si alguna condición no se cumple <---------Por Corregir
-  //  4- Cambia clase del mensaje de error del html a no valido o valido para que cambie en el
+  //  2- Cambia clase del mensaje de error del html a no valido o valido para que cambie en el
   //  HTML
 
   checkValidity: function(input) {
@@ -117,8 +81,6 @@ CustomValidation.prototype = {
 //-------------------------------------------------------------------------------------------------
 var user_name_input = document.querySelector("#uname");
 user_name_input.CustomValidation = new CustomValidation();
-// var cardNo_input = document.querySelector("#cardNo");
-// cardNo_input.CustomValidation = new CustomValidation();
 
 var notFormErrors = user_name_input.CustomValidation.notErrors;
 var notSimpleFormErrors = false;
@@ -127,7 +89,6 @@ var notSimpleFormErrors = false;
 user_name_input.addEventListener("keyup", function() {
   user_name_input.CustomValidation.checkValidity(this);
   notFormErrors = user_name_input.CustomValidation.checkValidity(this);
-  //CUIDADO!!!!!!!!!!!!!!!!!!!! Si el array es de dos dimensiones hay que hacer la operación flatten
   notSimpleFormErrors = notFormErrors.reduce((p, c) => p && c);
   console.log(`Validation final: ${notFormErrors}`);
 });
