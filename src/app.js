@@ -10,20 +10,22 @@ function CustomValidation(/*error_obj*/) {
   /*
 
   this.errors = {
-    user_errors:
-    {
+    type_error:{
       Long:
       {
         conditional: function(v) { return (v > 3); },
         message: "This input needs to be at least 3 characters long",
-        boolean: true,
-      }
+      },
       Special_charact:
       {
         conditional: function(v) { return v.match(/[^a-zA-Z0-9]/g); },
         message: "Must only contain letters and numbers (no special characters)",
-        boolean: true,
       }
+    },
+    user_errors:
+    {
+      this.type_error.Long
+      
     }
     pass_errors:
     {
